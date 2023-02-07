@@ -9,6 +9,7 @@ const bodyParser = require("body-parser")
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
+const methodOverride = require('method-override')
 
 
 app.set('view engine', 'ejs')
@@ -18,6 +19,7 @@ app.set('layout', 'layouts/layout')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 app.use(expressLayout)
+app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose')
 mongoose.set('strictQuery', false);
